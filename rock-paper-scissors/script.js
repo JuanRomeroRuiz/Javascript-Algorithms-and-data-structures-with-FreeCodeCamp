@@ -15,6 +15,23 @@ function hasPlayerWonTheRound(player, computer) {
   );
 }
 
+function getRoundResults(userOption) {
+  const computerResult = getRandomComputerResult();
+
+  if (userOption === computerResult) {
+    return `It's a tie! Both chose ${userOption}`;
+  }
+
+  if (hasPlayerWonTheRound(userOption, computerResult)) {
+    playerScore++;
+    return `Player wins! ${userOption} beats ${computerResult}`;
+  } else {
+    computerScore++;
+    return `Computer wins! ${computerResult} beats ${userOption}`;
+  }
+}
+
+
 const playerScoreSpanElement = document.getElementById("player-score");
 const computerScoreSpanElement = document.getElementById("computer-score");
 const roundResultsMsg = document.getElementById("results-msg");
@@ -56,3 +73,8 @@ function resetGame() {
   winnerMsgElement.innerText = "";
   roundResultsMsg.innerText = "";
 };
+
+document.getElementById("rock-btn").addEventListener("click", () => showResults("Rock"));
+document.getElementById("paper-btn").addEventListener("click", () => showResults("Paper"));
+document.getElementById("scissors-btn").addEventListener("click", () => showResults("Scissors"));
+document.getElementById("reset-game-btn").addEventListener("click", resetGame);
