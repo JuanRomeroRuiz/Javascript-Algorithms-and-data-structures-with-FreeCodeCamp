@@ -37,3 +37,22 @@ function showResults(userOption) {
     optionsContainer.style.display = "none";
   }
 };
+
+function resetGame() {
+  playerScore = 0;
+  computerScore = 0;
+
+  // Actualizar la interfaz con los nuevos puntajes
+  playerScoreSpanElement.innerText = playerScore;
+  computerScoreSpanElement.innerText = computerScore;
+
+  // Ocultar el botón de reinicio
+  resetGameBtn.style.display = "none";
+
+  // Mostrar las opciones del juego
+  optionsContainer.style.display = "block";
+
+  // Limpiar mensajes del resultado de la ronda y del ganador
+  winnerMsgElement.innerText = "";
+  roundResultsMsg.innerText = "";
+};
